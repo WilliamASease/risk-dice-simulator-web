@@ -14,7 +14,11 @@ function App() {
   const { imageDefinitions, relPathsForPreload } = useImageDefinitions();
 
   const blackBorder = { border: "solid black 5px" };
-  const diceStyle = { border: "solid black 5px", borderRadius: 25 };
+  const diceStyle = {
+    height: isMobile ? "50%" : undefined,
+    border: "solid black 5px",
+    borderRadius: 25,
+  };
 
   return (
     <FlexBox
