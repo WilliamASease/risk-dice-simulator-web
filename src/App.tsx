@@ -16,8 +16,8 @@ function App() {
   const blackBorder = { border: "solid black 5px" };
   const diceStyle = {
     height: isMobile ? "50%" : undefined,
-    border: "solid black 5px",
-    borderRadius: 25,
+    border: isMobile ? "solid black 2px" : "solid black 5px",
+    borderRadius: isMobile ? 5 : 25,
   };
 
   return (
