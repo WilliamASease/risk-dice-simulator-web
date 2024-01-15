@@ -13,6 +13,8 @@ import { ImagePreloader, useImageDefinitions } from "./data/ImageDefinitions";
 function App() {
   const { imageDefinitions, relPathsForPreload } = useImageDefinitions();
 
+  const blackBorder = { border: "solid black 5px" };
+
   return (
     <FlexBox
       orientation="column"
@@ -53,6 +55,25 @@ function App() {
               <InlineImage
                 style={{ width: "100%" }}
                 {...imageDefinitions.Fight}
+              />
+              <FlexBox style={{ flexGrow: 1 }} orientation={"column"}>
+                <FlexBox fullWidth orientation="row" style={{ height: "50%" }}>
+                  <InlineImage noDiv {...imageDefinitions.atk1} />
+                  <InlineImage noDiv {...imageDefinitions.atk2} />
+                </FlexBox>
+                <FlexBox fullWidth orientation="row" style={{ height: "50%" }}>
+                  <InlineImage noDiv {...imageDefinitions.def1} />
+                  <InlineImage noDiv {...imageDefinitions.def2} />
+                  <InlineImage noDiv {...imageDefinitions.def3} />
+                </FlexBox>
+              </FlexBox>
+              <InlineImage
+                style={{ width: isMobile ? "100%" : "50%", ...blackBorder }}
+                {...imageDefinitions.Roll}
+              />
+              <InlineImage
+                style={{ width: isMobile ? "100%" : "50%", ...blackBorder }}
+                {...imageDefinitions.RollAll}
               />
             </FlexBox>
             <FlexBox
