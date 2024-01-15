@@ -27,6 +27,14 @@ export const useImageDefinitions = () => {
       relPath: "RollAll.png",
       altText: "",
     },
+    RiskDiceSimulator: {
+      relPath: "RiskDiceSimulator.png",
+      altText: "",
+    },
+    WilliamASease: {
+      relPath: "WilliamASease.png",
+      altText: "",
+    },
     atk1: {
       relPath: "atk1.png",
       altText: "",

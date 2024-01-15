@@ -80,7 +80,7 @@ export const InlineImage = (props: {
   ) : (
     coreImg
   );
-  return <div>{img}</div>;
+  return props.noDiv ? img : <div>{img}</div>;
 };
 
 export const InlineLink = (props: { relPath: string; text: string }) => (

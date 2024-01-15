@@ -1,5 +1,6 @@
 import "./App.css";
 import {
+  Anchor,
   FlexBox,
   InlineImage,
   SiteBody,
@@ -37,32 +38,34 @@ function App() {
       >
         <ImagePreloader images={relPathsForPreload} />
         <FlexBox style={{ marginTop: ".5rem" }} orientation="row">
-          <SiteText
-            style={{ flexGrow: 1 }}
-            big
-            bold
-            value="Risk Dice Simulator"
-          />
+          <InlineImage noDiv {...imageDefinitions.RiskDiceSimulator} />
         </FlexBox>
         <SiteHorizontalRule />
         <SiteBody>
-          <InlineImage {...imageDefinitions.atk1} />
-          <InlineImage {...imageDefinitions.atk2} />
-          <InlineImage {...imageDefinitions.atk3} />
-          <InlineImage {...imageDefinitions.atk4} />
-          <InlineImage {...imageDefinitions.atk5} />
-          <InlineImage {...imageDefinitions.atk6} />
-          <InlineImage {...imageDefinitions.def1} />
-          <InlineImage {...imageDefinitions.def2} />
-          <InlineImage {...imageDefinitions.def3} />
-          <InlineImage {...imageDefinitions.def4} />
-          <InlineImage {...imageDefinitions.def5} />
-          <InlineImage {...imageDefinitions.def6} />
+          <div>
+            <InlineImage noDiv {...imageDefinitions.atk1} />
+            <InlineImage noDiv {...imageDefinitions.atk2} />
+            <InlineImage noDiv {...imageDefinitions.atk3} />
+            <InlineImage noDiv {...imageDefinitions.atk4} />
+            <InlineImage noDiv {...imageDefinitions.atk5} />
+            <InlineImage noDiv {...imageDefinitions.atk6} />
+          </div>
+          <div>
+            <InlineImage noDiv {...imageDefinitions.def1} />
+            <InlineImage noDiv {...imageDefinitions.def2} />
+            <InlineImage noDiv {...imageDefinitions.def3} />
+            <InlineImage noDiv {...imageDefinitions.def4} />
+            <InlineImage noDiv {...imageDefinitions.def5} />
+            <InlineImage noDiv {...imageDefinitions.def6} />
+          </div>
           <InlineImage {...imageDefinitions.Analyze} />
           <InlineImage {...imageDefinitions.Roll} />
           <InlineImage {...imageDefinitions.RollAll} />
         </SiteBody>
         <SiteHorizontalRule />
+        <Anchor link="https://williamasease.github.io">
+          <InlineImage {...imageDefinitions.WilliamASease} />
+        </Anchor>
       </FlexBox>
     </FlexBox>
   );
