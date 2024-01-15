@@ -15,10 +15,6 @@ export const ImagePreloader = (props: { images: string[] }) => (
 
 export const useImageDefinitions = () => {
   const imageDefinitions = {
-    Analyze: {
-      relPath: "Analyze.png",
-      altText: "",
-    },
     Roll: {
       relPath: "Roll.png",
       altText: "",
@@ -33,6 +29,22 @@ export const useImageDefinitions = () => {
     },
     WilliamASease: {
       relPath: "WilliamASease.png",
+      altText: "",
+    },
+    Fight: {
+      relPath: "Fight.png",
+      altText: "",
+    },
+    CombatLog: {
+      relPath: "CombatLog.png",
+      altText: "",
+    },
+    ArmySize: {
+      relPath: "ArmySize.png",
+      altText: "",
+    },
+    Analysis: {
+      relPath: "Analysis.png",
       altText: "",
     },
     atk1: {

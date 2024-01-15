@@ -50,13 +50,13 @@ function App() {
               style={{ width: "50%", border: "solid blue 1px" }}
               orientation="column"
             >
-              <div></div>
+              <InlineImage {...imageDefinitions.Fight} />
             </FlexBox>
             <FlexBox
               style={{ width: "50%", border: "solid blue 1px" }}
               orientation="column"
             >
-              <div></div>
+              <InlineImage {...imageDefinitions.CombatLog} />
             </FlexBox>
           </FlexBox>
           <FlexBox
@@ -67,13 +67,13 @@ function App() {
               style={{ width: "50%", border: "solid blue 1px" }}
               orientation="column"
             >
-              <div></div>
+              <InlineImage {...imageDefinitions.ArmySize} />
             </FlexBox>
             <FlexBox
               style={{ width: "50%", border: "solid blue 1px" }}
               orientation="column"
             >
-              <div></div>
+              <InlineImage {...imageDefinitions.Analysis} />
             </FlexBox>
           </FlexBox>
         </SiteBody>
