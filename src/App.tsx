@@ -42,29 +42,47 @@ function App() {
         </FlexBox>
         <SiteHorizontalRule />
         <SiteBody>
-          <div>
-            <InlineImage noDiv {...imageDefinitions.atk1} />
-            <InlineImage noDiv {...imageDefinitions.atk2} />
-            <InlineImage noDiv {...imageDefinitions.atk3} />
-            <InlineImage noDiv {...imageDefinitions.atk4} />
-            <InlineImage noDiv {...imageDefinitions.atk5} />
-            <InlineImage noDiv {...imageDefinitions.atk6} />
-          </div>
-          <div>
-            <InlineImage noDiv {...imageDefinitions.def1} />
-            <InlineImage noDiv {...imageDefinitions.def2} />
-            <InlineImage noDiv {...imageDefinitions.def3} />
-            <InlineImage noDiv {...imageDefinitions.def4} />
-            <InlineImage noDiv {...imageDefinitions.def5} />
-            <InlineImage noDiv {...imageDefinitions.def6} />
-          </div>
-          <InlineImage {...imageDefinitions.Analyze} />
-          <InlineImage {...imageDefinitions.Roll} />
-          <InlineImage {...imageDefinitions.RollAll} />
+          <FlexBox
+            style={{ height: "50%", border: "solid red 1px" }}
+            orientation="row"
+          >
+            <FlexBox
+              style={{ width: "50%", border: "solid blue 1px" }}
+              orientation="column"
+            >
+              <div></div>
+            </FlexBox>
+            <FlexBox
+              style={{ width: "50%", border: "solid blue 1px" }}
+              orientation="column"
+            >
+              <div></div>
+            </FlexBox>
+          </FlexBox>
+          <FlexBox
+            style={{ height: "50%", border: "solid red 1px" }}
+            orientation="row"
+          >
+            <FlexBox
+              style={{ width: "50%", border: "solid blue 1px" }}
+              orientation="column"
+            >
+              <div></div>
+            </FlexBox>
+            <FlexBox
+              style={{ width: "50%", border: "solid blue 1px" }}
+              orientation="column"
+            >
+              <div></div>
+            </FlexBox>
+          </FlexBox>
         </SiteBody>
         <SiteHorizontalRule />
         <Anchor link="https://williamasease.github.io">
-          <InlineImage {...imageDefinitions.WilliamASease} />
+          <InlineImage
+            style={{ width: isMobile ? "100%" : undefined }}
+            {...imageDefinitions.WilliamASease}
+          />
         </Anchor>
       </FlexBox>
     </FlexBox>

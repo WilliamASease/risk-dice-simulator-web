@@ -125,11 +125,11 @@ export const SiteBody = (props: { children?: ReactNode }) => {
       <div
         style={{
           height: dimensions[0],
+          width: dimensions[1],
           position: "absolute",
-          overflowY: "scroll",
         }}
       >
-        <div style={{ width: (dimensions[1] ?? 0) - 12 }}>{props.children}</div>
+        {props.children}
       </div>
     </div>
   );
