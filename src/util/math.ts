@@ -1,27 +1,9 @@
-import { DieType, PlayerType, RollType } from "../types/types";
-
-export function rollPlayerType(): PlayerType {
-  return Math.floor(Math.random() * 2) === 0 ? "ATK" : "DEF";
-}
+import { DieType, MessageLogType, RollType } from "../types/types";
 
 export function rollDie() {
   return Math.floor(Math.random() * 6 + 1);
 }
 
-function logUtil(
-  atkDice: DieType[],
-  defDice: DieType[],
-  numAtkDefeated: number,
-  numDefDefeated: number
-) {
-  console.info("------------------------------------------");
-  console.info(atkDice);
-  console.info(defDice);
-  console.info(
-    `${numAtkDefeated} defeated attackers ${numDefDefeated} defeated defenders`
-  );
-  console.info("------------------------------------------");
-}
 
 export function battle(atk: number, def: number): RollType {
   let atkDice: DieType[] = Array.from(new Array(atk))
@@ -71,4 +53,15 @@ export function battle(atk: number, def: number): RollType {
     balance: numAtkDefeated - numDefDefeated,
     timeStamp: Date.now(),
   };
+}
+
+export const logRoll : (roll:RollType) => MessageLogType = (roll) => {
+  let outcome = {color:"black" as "black" | "blue" | "red", value:"DRAW"};
+  if (roll.balance !== 0) {
+   outcome = {color:roll.balance < 0 ? "red" as "red" : "blue" as "blue", value:  `WIN x${Math.abs(roll.balance)}`}
+  }
+
+  return [
+    ...roll.atk.map((v) => ({color:"red" as "red", value:`${v.value}`, strike:v.defeated})), 
+    ...roll.def.map((v) => ({color:"blue" as "blue", value:`${v.value}`, strike:v.defeated})), outcome]
 }

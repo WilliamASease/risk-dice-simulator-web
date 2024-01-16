@@ -96,5 +96,9 @@ export const useImageDefinitions = () => {
     relPathsForPreload: Object.entries(imageDefinitions).map(
       ([v, i]) => i.relPath
     ),
+    getDie: (type: "atk" | "def", num: number) => ({
+      relPath: `${type}${num}.png`,
+      altText: "",
+    }),
   };
 };

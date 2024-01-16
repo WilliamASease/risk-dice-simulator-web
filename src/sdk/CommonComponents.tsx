@@ -62,6 +62,7 @@ export const InlineImage = (props: {
   altText: string;
   noDiv?: boolean;
   caption?: string;
+  onClick?: React.MouseEventHandler<HTMLImageElement>;
   style?: React.CSSProperties;
 }) => {
   const coreImg = (
@@ -69,6 +70,7 @@ export const InlineImage = (props: {
       src={`https://williamasease.github.io/risk-dice-simulator-web/build/images/${props.relPath}`}
       alt={props.altText}
       style={{ ...props.style }}
+      onClick={props.onClick}
     />
   );
 
