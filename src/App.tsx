@@ -5,13 +5,12 @@ import {
   InlineImage,
   SiteBody,
   SiteHorizontalRule,
-  SiteText,
 } from "./sdk/CommonComponents";
 import { isMobile } from "react-device-detect";
 import { ImagePreloader, useImageDefinitions } from "./data/ImageDefinitions";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { battle, logRoll } from "./util/math";
-import { MessageLogType, RollType } from "./types/types";
+import { battle, logRoll, simulate } from "./util/math";
+import { MessageLogType, RollType, SimulationType } from "./types/types";
 
 function App() {
   const { imageDefinitions, relPathsForPreload, getDie } =
@@ -30,12 +29,14 @@ function App() {
     gap: "5px",
   };
   const blackBorder2 = { border: "solid black 2px" };
+  const fifthWidth = { width: "50%" };
 
   const [atkMen, setAtkMen] = useState<number | null>(1);
   const [defMen, setDefMen] = useState<number | null>(1);
   const [battleRunning, setBattleRunning] = useState(false);
   const [rollDisplay, setRollDisplay] = useState<RollType | null>(null);
   const [messageLog, setMessageLog] = useState<MessageLogType[]>([]);
+  const [simulation, setSimulation] = useState<SimulationType | null>(null);
   const messageLogRef = useRef<HTMLDivElement>(null);
   const appendMessage = useCallback(
     (msg: MessageLogType) => {
@@ -53,7 +54,7 @@ function App() {
         });
       }
     }, 100);
-  }, [messageLogRef.current, messageLog]);
+  }, [messageLogRef, messageLog]);
 
   useEffect(
     () => appendMessage([{ color: "black", value: "Welcome to RISK!" }]),
@@ -323,6 +324,53 @@ function App() {
                 style={{ width: "100%" }}
                 {...imageDefinitions.Analysis}
               />
+              <div
+                onClick={() =>
+                  setSimulation(simulate(1000, atkMen ?? 0, defMen ?? 0))
+                }
+                style={{ color: "blue", textDecoration: "underline" }}
+              >
+                Run 1000 simulations
+              </div>
+              {simulation && (
+                <div>
+                  <div>{simulation.totalSimulations} Simulations</div>
+                  <div>
+                    {simulation.atk} Attackers {simulation.def} Defenders
+                  </div>
+                  <div
+                    style={{
+                      color: simulation.probAtkSuccess >= 50 ? "red" : "blue",
+                    }}
+                  >
+                    Attack succeeds {simulation.probAtkSuccess}% of the time
+                  </div>
+                  <div style={{ width: "100%" }}>
+                    <FlexBox orientation="row">
+                      <span style={{ ...fifthWidth }}>%</span>
+                      <span style={{ ...fifthWidth }}>Min</span>
+                      <span style={{ ...fifthWidth }}>25</span>
+                      <span style={{ ...fifthWidth }}>Median</span>
+                      <span style={{ ...fifthWidth }}>75</span>
+                      <span style={{ ...fifthWidth }}>Max</span>
+                    </FlexBox>
+                    <FlexBox orientation="row">
+                      <span style={{ color: "red", ...fifthWidth }}>ATK</span>
+                      {simulation.quartilesAtkRem.map((n) => (
+                        <span style={{ color: "red", ...fifthWidth }}>{n}</span>
+                      ))}
+                    </FlexBox>
+                    <FlexBox orientation="row">
+                      <span style={{ color: "blue", ...fifthWidth }}>DEF</span>
+                      {simulation.quartilesDefRem.map((n) => (
+                        <span style={{ color: "blue", ...fifthWidth }}>
+                          {n}
+                        </span>
+                      ))}
+                    </FlexBox>
+                  </div>
+                </div>
+              )}
             </FlexBox>
           </FlexBox>
         </SiteBody>
